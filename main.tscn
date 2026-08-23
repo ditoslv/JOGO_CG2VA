@@ -1,3 +1,45 @@
 [gd_scene format=3 uid="uid://dyle7bxwpfxi5"]
 
+[ext_resource type="Script" uid="uid://dfmh6nrflltbk" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://boqu33ainl0oo" path="res://scripts/alvo.gd" id="1_ig7tw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 60.0
+
+[sub_resource type="GDScript" id="GDScript_0xm2m"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(\"ACERTOU O ALVO!\")
+"
+
 [node name="Main" type="Node2D" unique_id=2074279355]
+script = ExtResource("1_h2yge")
+
+[node name="Alvo" type="Area2D" parent="." unique_id=818916886]
+position = Vector2(400, 300)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alvo" unique_id=2132938572]
+shape = SubResource("CircleShape2D_0xm2m")
+script = SubResource("GDScript_0xm2m")
+
+[node name="Pontuacao" type="Label" parent="." unique_id=623086219]
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 154.0
+offset_bottom = 50.0
+
+[connection signal="acertou" from="Alvo" to="." method="_on_alvo_acertou"]
+[connection signal="input_event" from="Alvo" to="Alvo" method="_on_input_event"]
