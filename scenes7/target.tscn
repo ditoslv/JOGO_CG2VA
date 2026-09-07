@@ -7,7 +7,7 @@
 script = ExtResource("1_md1p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504664919]
-position = Vector2(84.00001, 212)
+position = Vector2(6, 0)
 scale = Vector2(0.14442465, 0.13385083)
 texture = ExtResource("2_md1p4")
 
@@ -18,10 +18,10 @@ amount = 20
 one_shot = true
 explosiveness = 1.0
 emission_shape = 1
-emission_sphere_radius = 0.01
+emission_sphere_radius = 45.85
 spread = 180.0
 gravity = Vector2(0, 200)
 initial_velocity_min = 150.0
 initial_velocity_max = 300.0
-scale_amount_max = 3.0
+scale_amount_max = 10.0
 color = Color(0.80302876, 0, 0.104973994, 1)

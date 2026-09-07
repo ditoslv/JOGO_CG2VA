@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://gp11a8663xuq"]
+
+[ext_resource type="Script" uid="uid://2egr7a83fkxy" path="res://audio_manager.gd" id="1_2nh25"]
+
+[node name="AudioManager" type="Node" unique_id=135494414]
+script = ExtResource("1_2nh25")
+
+[node name="SFX_Acerto" type="AudioStreamPlayer" parent="." unique_id=1185378648]
