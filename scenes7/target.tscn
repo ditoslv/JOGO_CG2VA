@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bakb0c5nqppjd"]
+
+[ext_resource type="Script" uid="uid://ji0iw01s81ia" path="res://scenes7/target.gd" id="1_md1p4"]
+[ext_resource type="Texture2D" uid="uid://dk8tuomsdnn3v" path="res://assents/sprites/Sprite_alvo.png" id="2_md1p4"]
+
+[node name="Target" type="Node2D" unique_id=1179545228]
+script = ExtResource("1_md1p4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504664919]
+position = Vector2(64.89739, 72.98732)
+scale = Vector2(0.14442465, 0.13385083)
+texture = ExtResource("2_md1p4")
