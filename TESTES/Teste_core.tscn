@@ -23,7 +23,7 @@ script = ExtResource("2_jux5a")
 script = ExtResource("3_vcogu")
 target_scene = ExtResource("4_target")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=879149472]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1826590411]
 offset_right = 40.0
