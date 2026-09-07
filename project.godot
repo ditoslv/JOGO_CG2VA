@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ScoreSystem="*uid://dm4xt0f7q7c06"
+AudioManager="*uid://gp11a8663xuq"
 
 [display]
 
