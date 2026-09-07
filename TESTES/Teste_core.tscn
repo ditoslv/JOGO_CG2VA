@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c3qhpijirm4el"]
+
+[ext_resource type="Script" uid="uid://mnwpxoq0u81m" path="res://TESTES/Teste_core.gd" id="1_2f32m"]
+[ext_resource type="Script" uid="uid://csw655tiqt6cr" path="res://scripts/Core/Mira.gd" id="1_l0h3n"]
+[ext_resource type="Texture2D" uid="uid://d26oyh36jb5m0" path="res://SPRITES/MIRA.png" id="2_8fgkk"]
+[ext_resource type="Script" uid="uid://cllj5s26xrkvq" path="res://scripts/Core/Disparo.gd" id="2_jux5a"]
+[ext_resource type="Script" uid="uid://buup8ds55ltry" path="res://scripts/Core/TargetSpawner.gd" id="3_vcogu"]
+[ext_resource type="PackedScene" uid="uid://cyg2v6d3pvwo2" path="res://scenes/Targets/Target.tscn" id="4_target"]
+
+[node name="TesteCore" type="Node2D" unique_id=427464315]
+script = ExtResource("1_2f32m")
+
+[node name="Mira" type="Node2D" parent="." unique_id=1937328153]
+script = ExtResource("1_l0h3n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mira" unique_id=534126409]
+texture = ExtResource("2_8fgkk")
+
+[node name="Disparo" type="Node2D" parent="." unique_id=833316843]
+script = ExtResource("2_jux5a")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=870228428]
+script = ExtResource("3_vcogu")
+target_scene = ExtResource("4_target")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1826590411]
+offset_right = 40.0
+offset_bottom = 23.0
