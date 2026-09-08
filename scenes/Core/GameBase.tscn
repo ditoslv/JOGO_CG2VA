@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/Core/GameBase.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/Core/Mira.gd" id="2"]
@@ -7,6 +7,19 @@
 [ext_resource type="Script" path="res://scripts/Core/TargetSpawner.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/Targets/Target.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="7"]
+[ext_resource type="Shader" path="res://SPRITES/crosshair.gdshader" id="8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mira"]
+shader = ExtResource("8")
+shader_parameter/shift_x = 0.0
+shader_parameter/shift_y = 0.0
+shader_parameter/shift_rotate = 0.0
+shader_parameter/crosshair_color = Color(1, 1, 1, 1)
+shader_parameter/spread = 0.0
+shader_parameter/shape_sides = 4.0
+shader_parameter/radius_rectangle = 0.14
+shader_parameter/rectangle_size_x = 1.3
+shader_parameter/rectangle_scale = 3.0
 
 [node name="GameBase" type="Node2D"]
 script = ExtResource("1")
@@ -15,10 +28,12 @@ script = ExtResource("1")
 z_index = -100
 
 [node name="Mira" type="Node2D" parent="."]
+z_index = 1
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mira"]
-scale = Vector2(0.4, 0.4)
+material = SubResource("ShaderMaterial_mira")
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3")
 
 [node name="Disparo" type="Node2D" parent="."]
