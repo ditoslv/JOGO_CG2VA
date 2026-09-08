@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://bukq5cpybvrge"]
 
-[ext_resource type="Texture2D" uid="uid://bg0xellnt2bn5" path="res://assents/sprites/img_de_parede(final).png" id="1_4ibrk"]
+[ext_resource type="Texture2D" uid="uid://crwu7xtogmmtk" path="res://assents/sprites/img_de_parede(final).jpg" id="1_4ibrk"]
 
 [node name="Background" type="Node2D" unique_id=479575969]
 
 [node name="imagem_de_parede" type="TextureRect" parent="." unique_id=1415520820]
-offset_right = 1156.0
-offset_bottom = 657.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2127.0
+offset_top = -707.0
+offset_right = 485.0
+offset_bottom = 925.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImgDeParede(final)" type="Sprite2D" parent="." unique_id=1644622599]
+position = Vector2(584.49994, 334.75)
+scale = Vector2(0.43912712, 0.4059436)
 texture = ExtResource("1_4ibrk")
