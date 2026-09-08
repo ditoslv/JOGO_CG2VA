@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bukq5cpybvrge"]
 
+[ext_resource type="Texture2D" uid="uid://bg0xellnt2bn5" path="res://assents/sprites/img_de_parede(final).png" id="1_4ibrk"]
+
 [node name="Background" type="Node2D" unique_id=479575969]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=299404415]
-offset_right = 1154.0
-offset_bottom = 646.0
-color = Color(0.6221628, 0.32388467, 0, 1)
+[node name="imagem_de_parede" type="TextureRect" parent="." unique_id=1415520820]
+offset_right = 1156.0
+offset_bottom = 657.0
+texture = ExtResource("1_4ibrk")

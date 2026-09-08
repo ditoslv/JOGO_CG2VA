@@ -10,9 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dydgxgiy8lrrk" path="res://scenes/modes/order_mode.tscn" id="8_38t1j"]
 [ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="9_142bc"]
 [ext_resource type="PackedScene" uid="uid://bia2ga1ibfc4d" path="res://scenes/ui/result_screen.tscn" id="10_vxhi4"]
+[ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="11_38t1j"]
 
 [node name="TesteCore" type="Node2D" unique_id=427464315]
 script = ExtResource("1_2f32m")
+
+[node name="Background" parent="." unique_id=479575969 instance=ExtResource("11_38t1j")]
 
 [node name="Mira" type="Node2D" parent="." unique_id=1937328153]
 script = ExtResource("1_l0h3n")

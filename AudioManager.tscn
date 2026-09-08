@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://2egr7a83fkxy" path="res://audio_manager.gd" id="1_2nh25"]
 [ext_resource type="AudioStream" uid="uid://btmokgfedpsa" path="res://audios/arrow-impact.mp3" id="2_sxe6l"]
 [ext_resource type="AudioStream" uid="uid://d323kbxkll7rp" path="res://audios/error-126627.mp3" id="3_mh7xs"]
-[ext_resource type="AudioStream" uid="uid://b4cnmd4elfvx5" path="res://audios/『 Frieren Beyond Journey's End 』Epic OST - Sorikai _ (youtube).mp3" id="4_wda1a"]
+[ext_resource type="AudioStream" uid="uid://r8w5gi734ibt" path="res://audios/musica_de_fundo.mp3" id="4_sxe6l"]
 
 [node name="AudioManager" type="Node" unique_id=135494414]
 script = ExtResource("1_2nh25")
@@ -15,6 +15,6 @@ stream = ExtResource("2_sxe6l")
 stream = ExtResource("3_mh7xs")
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=2133037119]
-stream = ExtResource("4_wda1a")
+stream = ExtResource("4_sxe6l")
 volume_db = -25.0
 autoplay = true
