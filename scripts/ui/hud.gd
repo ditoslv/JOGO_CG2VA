@@ -1,13 +1,31 @@
 extends Control
 
-@onready var label_pontuacao = $VBoxContainer/LabelPontuacao
-@onready var label_acertos = $VBoxContainer/LabelAcertos
-@onready var label_erros = $VBoxContainer/LabelErros
-@onready var label_precisao = $VBoxContainer/LabelPrecisao
+@onready var painel_pontuacao: NinePatchRect = $PainelPontuacao
+@onready var label_pontuacao = $PainelPontuacao/VBoxContainer/LabelPontuacao
+@onready var label_acertos = $PainelPontuacao/VBoxContainer/LabelAcertos
+@onready var label_erros = $PainelPontuacao/VBoxContainer/LabelErros
+@onready var label_precisao = $PainelPontuacao/VBoxContainer/LabelPrecisao
+
+## Margem (em pixels) entre o painel e a borda direita/superior da tela.
+@export var margem_borda: float = 20.0
+
 
 func _ready() -> void:
+	_posicionar_painel_no_canto_superior_direito()
 	ScoreSystem.score_updated.connect(_atualizar_hud)
 	_atualizar_hud(ScoreSystem.obter_resultado_final())
+
+
+## Calculado em runtime (como o GameBase.gd já faz com a área de
+## spawn) em vez de fixo no .tscn, porque o HUD não é esticado pra
+## tela cheia — só assim o painel encosta na borda direita real,
+## e não num ponto fixo que dependeria da resolução da janela.
+func _posicionar_painel_no_canto_superior_direito() -> void:
+	var tamanho_tela := get_viewport_rect().size
+	painel_pontuacao.position = Vector2(
+		tamanho_tela.x - painel_pontuacao.size.x - margem_borda,
+		margem_borda
+	)
 
 
 func _atualizar_hud(dados: Dictionary) -> void:
