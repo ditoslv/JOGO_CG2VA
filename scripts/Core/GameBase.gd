@@ -12,12 +12,26 @@ class_name GameBase
 
 signal fase_concluida()
 
+@export var margem_spawn: float = 60.0
+
 @onready var spawner: TargetSpawner = $Spawner
 @onready var cronometro: Timer = $Cronometro
 
 
 func _ready() -> void:
+	_ajustar_area_de_spawn()
 	spawner.fase_concluida.connect(func(): fase_concluida.emit())
+
+
+## Limita onde os alvos podem nascer ao tamanho real da janela (com uma
+## margem), em vez do Rect2 fixo e centrado em (0,0) que o TargetSpawner
+## usa por padrão — esse default sozinho deixa metade da área fora da tela.
+func _ajustar_area_de_spawn() -> void:
+	var tamanho := get_viewport_rect().size
+	spawner.area_spawn = Rect2(
+		Vector2(margem_spawn, margem_spawn),
+		Vector2(tamanho.x - margem_spawn * 2.0, tamanho.y - margem_spawn * 2.0)
+	)
 
 
 ## Chamar UMA VEZ no início de uma rodada inteira (não a cada fase!).

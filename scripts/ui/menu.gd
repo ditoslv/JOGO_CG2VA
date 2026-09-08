@@ -10,7 +10,7 @@ extends Control
 ## de cena, o que é esperado até lá.
 ## ============================================================
 
-const CENA_SOLO := "res://scenes/modes/SoloMode.tscn"
+const CENA_SOLO := "res://scenes/modes/solo_mode.tscn"
 const CENA_1V1 := "res://scenes/modes/VersusMode.tscn"
 const CENA_ORDEM_DO_ALVO := "res://scenes/modes/order_mode.tscn"
 

@@ -28,7 +28,7 @@ signal target_resolved(target: Node) # emitido nos dois casos acima -> usado pel
 
 @onready var _collision: CollisionShape2D = $CollisionShape2D
 @onready var _sprite: Sprite2D = $Sprite2D
-@onready var _particulas: CPUParticles2D = $CPUParticles2D
+
 
 func _ready() -> void:
 	desativar() # todo alvo começa inativo até o spawner chamar ativar()
@@ -84,15 +84,6 @@ func ativar(config: Dictionary = {}) -> void:
 	_collision.disabled = false
 	scale = Vector2.ONE
 	rotation = 0.0
-	# (Resto da função ativar() acima...)
-	scale = Vector2.ONE
-	rotation = 0.0
-	
-	# ADICIONE ESTAS LINHAS AQUI NO FINAL DA FUNÇÃO:
-	if velocidade == 0.0:
-		velocidade = 150.0
-	if direcao == Vector2.ZERO:
-		direcao = Vector2(1, 0) # Vector2(1, 0) faz o alvo andar para a direita
 
 
 ## Chamada pelo sistema de disparo (Disparo.gd) quando este alvo é atingido.
