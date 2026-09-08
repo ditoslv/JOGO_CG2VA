@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cyg2v6d3pvwo2"]
 
 [ext_resource type="Script" uid="uid://cm4no4rmy7uqs" path="res://scripts/Target/Target.gd" id="1_v1p5q"]
+[ext_resource type="Texture2D" uid="uid://dk8tuomsdnn3v" path="res://assents/sprites/Sprite_alvo.png" id="2_vwo1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
 radius = 34.132095
@@ -8,8 +9,11 @@ radius = 34.132095
 [node name="Target" type="Area2D" unique_id=634500549]
 script = ExtResource("1_v1p5q")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1250471567]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892232909]
 position = Vector2(73, 49)
 shape = SubResource("CircleShape2D_xrivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1250471567]
+position = Vector2(-2.500002, -1.4305115e-06)
+scale = Vector2(0.08953488, 0.094890505)
+texture = ExtResource("2_vwo1d")
