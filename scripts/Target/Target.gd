@@ -28,6 +28,7 @@ signal target_resolved(target: Node) # emitido nos dois casos acima -> usado pel
 
 @onready var _collision: CollisionShape2D = $CollisionShape2D
 @onready var _sprite: Sprite2D = $Sprite2D
+@onready var _particulas: CPUParticles2D = $Particulas
 
 
 func _ready() -> void:
@@ -80,7 +81,7 @@ func ativar(config: Dictionary = {}) -> void:
 	_tempo_restante = tempo_de_vida
 	_tempo_escala = 0.0
 	is_active = true
-	visible = true
+	_sprite.visible = true
 	_collision.disabled = false
 	scale = Vector2.ONE
 	rotation = 0.0
@@ -92,7 +93,9 @@ func registrar_acerto() -> void:
 		return
 	is_active = false
 	_collision.disabled = true
-	visible = false
+	_sprite.visible = false
+	if _particulas:
+		_particulas.restart()
 	target_hit.emit(pontos)
 	target_resolved.emit(self)
 
@@ -100,7 +103,8 @@ func registrar_acerto() -> void:
 ## Usada tanto pelo acerto quanto pela expiração por tempo.
 func desativar() -> void:
 	is_active = false
-	visible = false
+	if _sprite:
+		_sprite.visible = false
 	if _collision:
 		_collision.disabled = true
 
