@@ -21,6 +21,12 @@ var is_active: bool = false
 var _tempo_restante: float = 0.0
 var _tempo_escala: float = 0.0
 
+# Estado interno só do movimento circular (fase de "rotação pura",
+# ver _aplicar_movimento_circular() abaixo).
+const RAIO_ORBITAL: float = 70.0
+var _centro_orbital: Vector2 = Vector2.ZERO
+var _angulo_orbital: float = 0.0
+
 # --- Sinais ---
 signal target_hit(pontos: int)      # emitido ao ser acertado
 signal target_expired()             # emitido ao expirar sem ser acertado
@@ -52,15 +58,35 @@ func _process(delta: float) -> void:
 ## acima. Nenhuma outra função deste script deve ser alterada.
 ## ------------------------------------------------------------
 func _aplicar_movimento(delta: float) -> void:
-	if velocidade > 0.0 and direcao != Vector2.ZERO:
-		position += direcao.normalized() * velocidade * delta
-	if velocidade_angular != 0.0:
-		rotation += velocidade_angular * delta
+	if velocidade_angular != 0.0 and velocidade == 0.0:
+		# Fase de "só rotação" (ex.: Fase 4): em vez de só girar parado
+		# no lugar, o alvo agora descreve um círculo — ver
+		# _aplicar_movimento_circular() logo abaixo.
+		_aplicar_movimento_circular(delta)
+	else:
+		if velocidade > 0.0 and direcao != Vector2.ZERO:
+			position += direcao.normalized() * velocidade * delta
+		if velocidade_angular != 0.0:
+			rotation += velocidade_angular * delta
+
 	if escala_max != escala_min:
 		_tempo_escala += delta
 		var t: float = (sin(_tempo_escala) + 1.0) / 2.0  # oscila 0..1
 		var s: float = lerp(escala_min, escala_max, t)
 		scale = Vector2(s, s)
+
+
+## Movimento circular: em vez de só rotacionar em torno do próprio eixo,
+## o alvo passa a transladar ao redor de um centro fixo (o ponto onde
+## nasceu), aplicando a matriz de rotação R(θ) sobre um vetor de raio
+## fixo a cada frame — P(t) = centro + R(θ(t)) * raio. O nó também
+## continua girando (rotation), então o conceito de rotação segue
+## visível tanto na trajetória quanto na orientação do alvo.
+func _aplicar_movimento_circular(delta: float) -> void:
+	_angulo_orbital += velocidade_angular * delta
+	var offset := Vector2(RAIO_ORBITAL, 0.0).rotated(_angulo_orbital)
+	position = _centro_orbital + offset
+	rotation += velocidade_angular * delta
 
 
 ## Chamada pelo TargetSpawner para (re)ativar este alvo com nova configuração.
@@ -79,6 +105,8 @@ func ativar(config: Dictionary = {}) -> void:
 
 	_tempo_restante = tempo_de_vida
 	_tempo_escala = 0.0
+	_centro_orbital = global_position  # ponto de partida do círculo, se este alvo entrar em movimento orbital
+	_angulo_orbital = 0.0
 	is_active = true
 	_sprite.visible = true
 	_collision.disabled = false

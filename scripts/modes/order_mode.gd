@@ -37,8 +37,11 @@ var _tela_resultado: Control
 
 
 func _ready() -> void:
-	$Disparo.ativo = true
-	$Disparo.ativo = false
+	# Mantém o Disparo LIGADO (senão nenhum clique é detectado e o modo
+	# fica mudo/sem reação) mas desliga a pontuação automática dele —
+	# quem decide acerto/erro aqui é validar_acerto(), reagindo ao
+	# sinal "target_hit" que colisor.registrar_acerto() já dispara.
+	$Disparo.pontuar_automaticamente = false
 
 	_tela_resultado = RESULT_SCREEN_SCENE.instantiate()
 	_tela_resultado.visible = false
