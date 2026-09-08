@@ -4,11 +4,14 @@ class_name ResultScreen
 ## ============================================================
 ## CONTRATO PÚBLICO DESTA CENA — combinado com a equipe.
 ## Quem orquestra o fim de uma rodada (SoloMode, VersusMode,
-## OrderMode) deve chamar UMA das duas funções abaixo para exibir
-## o resultado. Nenhum outro script deve acessar os Labels
+## OrderMode) deve chamar UMA das funções abaixo para exibir o
+## resultado. Nenhum outro script deve acessar os Labels
 ## diretamente.
 ##
-## - exibir_resultado_solo(dados)              -> Solo e Ordem do Alvo
+## - mostrar_resultado(dados)                  -> usada pelo SoloMode (A)
+## - exibir_resultado_solo(dados)              -> usada pelo OrderMode (B)
+##   (as duas fazem a mesma coisa; "mostrar_resultado" existe só
+##   pra bater com o nome que o SoloMode já usa)
 ## - exibir_resultado_1v1(dados_p1, dados_p2)   -> 1v1
 ##
 ## "dados" é o Dictionary retornado por
@@ -34,6 +37,13 @@ func exibir_resultado_solo(dados: Dictionary) -> void:
 	painel_jogador2.visible = false
 	label_vencedor.visible = false
 	_preencher_painel(painel_jogador1, dados)
+
+
+## Apelido de exibir_resultado_solo(), só pra bater com o nome que
+## o solo_mode.gd (Integrante A) já chama. Mantido junto da função
+## acima pra não terem duas implementações divergindo.
+func mostrar_resultado(dados: Dictionary) -> void:
+	exibir_resultado_solo(dados)
 
 
 ## Chamada pelo VersusMode (1v1) depois que os dois jogadores jogaram.

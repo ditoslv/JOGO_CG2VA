@@ -5,20 +5,45 @@ extends Node2D
 @onready var hud = $HUD
 
 const TARGET_SCENE := preload("res://scenes/Targets/Target.tscn")
+const RESULT_SCREEN_SCENE := preload("res://scenes/ui/result_screen.tscn")
 
 # Área onde os alvos podem aparecer (ajuste conforme o tamanho da sua cena)
 var area_spawn: Rect2 = Rect2(Vector2(-300, -200), Vector2(600, 400))
 
-var quantidade_alvos: int = 3          # progressão: 3 -> 4-5 -> movimento -> rotação/escala
+## ------------------------------------------------------------
+## Progressão de dificuldade (Seção D.3 do planejamento):
+## 3 estáticos -> 4-5 estáticos -> movimento -> rotação/escala.
+## Cada Dictionary é passado direto pro Target.ativar() (mais a
+## chave "quantidade", lida só aqui). Chaves ausentes = padrão do
+## Target (estático).
+## ------------------------------------------------------------
+var configuracoes_rodadas: Array[Dictionary] = [
+	{"quantidade": 3},
+	{"quantidade": 4},
+	{"quantidade": 5},
+	{"quantidade": 4, "velocidade": 80.0, "direcao": Vector2(1, 0)},
+	{"quantidade": 4, "velocidade_angular": 2.0},
+	{"quantidade": 4, "velocidade": 80.0, "direcao": Vector2(1, 0),
+		"velocidade_angular": 2.0, "escala_min": 0.7, "escala_max": 1.3},
+]
+
+var rodada_atual: int = 0
 var sequencia_correta: Array = []
 var indice_atual: int = 0
 var tempo_exibicao_sequencia: float = 3.0
 var alvos_ativos: Array = []           # instâncias de Target nesta rodada
 
+var _tela_resultado: Control
+
 
 func _ready() -> void:
 	$Disparo.ativo = true
 	$Disparo.ativo = false
+
+	_tela_resultado = RESULT_SCREEN_SCENE.instantiate()
+	_tela_resultado.visible = false
+	add_child(_tela_resultado)
+
 	if not iniciar_automaticamente:
 		return
 	timer_exibicao.wait_time = tempo_exibicao_sequencia
@@ -31,7 +56,8 @@ func _ready() -> void:
 func iniciar_rodada() -> void:
 	_limpar_alvos_antigos()
 	indice_atual = 0
-	sequencia_correta = gerar_sequencia(quantidade_alvos)
+	var quantidade: int = configuracoes_rodadas[rodada_atual].get("quantidade", 3)
+	sequencia_correta = gerar_sequencia(quantidade)
 	spawnar_alvos_numerados()
 	exibir_sequencia()
 
@@ -43,6 +69,8 @@ func gerar_sequencia(qtd: int) -> Array:
 
 
 func spawnar_alvos_numerados() -> void:
+	var config_rodada: Dictionary = configuracoes_rodadas[rodada_atual]
+
 	for numero in sequencia_correta:
 		var t: Target = TARGET_SCENE.instantiate()
 		add_child(t)
@@ -54,10 +82,12 @@ func spawnar_alvos_numerados() -> void:
 		t.target_hit.connect(_on_target_hit.bind(t))
 		t.target_expired.connect(_on_target_expired.bind(t))
 
-		var config := {
-			"posicao": _posicao_aleatoria(),
-			"tempo_de_vida": 999.0,  # nesta fase, o alvo não deve expirar sozinho
-		}
+		# Config do alvo = parâmetros de movimento/rotação/escala da rodada atual
+		# + posição sorteada + tempo de vida infinito (esse modo não expira alvo por tempo).
+		var config := config_rodada.duplicate()
+		config.erase("quantidade")
+		config["posicao"] = _posicao_aleatoria()
+		config["tempo_de_vida"] = 999.0
 		t.ativar(config)
 
 		_criar_label_numero(t, numero)
@@ -108,7 +138,7 @@ func validar_acerto(numero_do_alvo: int) -> void:
 
 	if numero_do_alvo == esperado:
 		indice_atual += 1
-		ScoreSystem.registrar_acerto(10) 
+		ScoreSystem.registrar_acerto(10)
 		#ajustar o valor de pontos se quiser diferente por alvo
 
 		if indice_atual >= sequencia_correta.size():
@@ -127,9 +157,21 @@ func aplicar_penalidade() -> void:
 
 func rodada_concluida() -> void:
 	print("Sequência completa!")
-	quantidade_alvos += 1  # progressão de dificuldade
-	# AJUSTAR: aqui entra a chamada pra ResultScreen quando a rodada acabar de vez
-	iniciar_rodada()
+	rodada_atual += 1
+
+	if rodada_atual >= configuracoes_rodadas.size():
+		_finalizar_partida()
+	else:
+		iniciar_rodada()
+
+
+## Chamada quando todas as rodadas da progressão terminam. Mostra a
+## tela de resultados por cima do jogo com o total acumulado da partida.
+func _finalizar_partida() -> void:
+	_limpar_alvos_antigos()
+	label_sequencia.visible = false
+	_tela_resultado.visible = true
+	_tela_resultado.exibir_resultado_solo(ScoreSystem.obter_resultado_final())
 
 
 func _limpar_alvos_antigos() -> void:
