@@ -1,5 +1,5 @@
 extends Node2D
-
+@export var iniciar_automaticamente: bool = true
 @onready var label_sequencia = $LabelSequencia
 @onready var timer_exibicao = $TimerExibicaoSequencia
 @onready var hud = $HUD
@@ -17,6 +17,10 @@ var alvos_ativos: Array = []           # instâncias de Target nesta rodada
 
 
 func _ready() -> void:
+	$Disparo.ativo = true
+	$Disparo.ativo = false
+	if not iniciar_automaticamente:
+		return
 	timer_exibicao.wait_time = tempo_exibicao_sequencia
 	timer_exibicao.one_shot = true
 	timer_exibicao.timeout.connect(_esconder_numeros)
