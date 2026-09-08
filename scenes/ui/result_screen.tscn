@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bia2ga1ibfc4d"]
+
+[ext_resource type="Script" uid="uid://c1ejisqqxcn4r" path="res://scripts/ui/result_screen.gd" id="1_07uyp"]
+
+[node name="ResultScreen" type="Control" unique_id=1989643837]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_07uyp")
+
+[node name="PainelJogador1" type="VBoxContainer" parent="." unique_id=1587306857]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelPontuaçãoFinal" type="Label" parent="PainelJogador1" unique_id=1135401923]
+layout_mode = 2
+text = "Pontuação:0"
+
+[node name="LabelAcertosFinal" type="Label" parent="PainelJogador1" unique_id=619852373]
+layout_mode = 2
+text = "Acertos:0"
+
+[node name="LabelErrosFinal" type="Label" parent="PainelJogador1" unique_id=499243879]
+layout_mode = 2
+text = "Erros:0"
+
+[node name="LabelPrecisaoFinal" type="Label" parent="PainelJogador1" unique_id=111104774]
+layout_mode = 2
+text = "PrecisaoFinal"
+
+[node name="LabelTempoFinal" type="Label" parent="PainelJogador1" unique_id=1979443855]
+layout_mode = 2
+text = "TempoFinal"
+
+[node name="PainelJogador2" type="VBoxContainer" parent="." unique_id=1754049125]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelPontuaçãoFinal" type="Label" parent="PainelJogador2" unique_id=211259209]
+layout_mode = 2
+text = "Pontuação:0"
+
+[node name="LabelAcertosFinal" type="Label" parent="PainelJogador2" unique_id=347092434]
+layout_mode = 2
+text = "Acertos:0"
+
+[node name="LabelErrosFinal" type="Label" parent="PainelJogador2" unique_id=293411395]
+layout_mode = 2
+text = "Erros:0"
+
+[node name="LabelPrecisaoFinal" type="Label" parent="PainelJogador2" unique_id=1687308890]
+layout_mode = 2
+text = "PrecisaoFinal"
+
+[node name="LabelTempoFinal" type="Label" parent="PainelJogador2" unique_id=589405610]
+layout_mode = 2
+text = "TempoFinal"
+
+[node name="LabelVencedor" type="Label" parent="." unique_id=1614200964]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="." unique_id=2113012081]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Voltar ao Menu"
