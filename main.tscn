@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dyle7bxwpfxi5"]
 
+[ext_resource type="PackedScene" uid="uid://c8jui1uifm67w" path="res://scenes/menu/Menu.tscn" id="1_ig7tw"]
+
 [sub_resource type="GDScript" id="GDScript_7dm0k"]
 script/source = "extends Node2D
 
@@ -12,3 +14,5 @@ func _on_alvo_acertou():
 
 [node name="Main" type="Node2D" unique_id=2074279355]
 script = SubResource("GDScript_7dm0k")
+
+[node name="TesteCore" parent="." unique_id=427464315 instance=ExtResource("1_ig7tw")]
