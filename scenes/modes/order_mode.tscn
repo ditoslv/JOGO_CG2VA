@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dydgxgiy8lrrk"]
+
+[ext_resource type="Script" uid="uid://cgsbg6u0ru56k" path="res://scripts/modes/order_mode.gd" id="1_8qn6o"]
+[ext_resource type="Script" uid="uid://cllj5s26xrkvq" path="res://scripts/Core/Disparo.gd" id="2_qvhda"]
+[ext_resource type="Script" uid="uid://buup8ds55ltry" path="res://scripts/Core/TargetSpawner.gd" id="3_jpgx6"]
+[ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="4_3fxe8"]
+
+[sub_resource type="GDScript" id="GDScript_wn3gm"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="OrderMode" type="Node2D" unique_id=1456624125]
+script = ExtResource("1_8qn6o")
+
+[node name="Mira" type="Node2D" parent="." unique_id=1511470903]
+script = SubResource("GDScript_wn3gm")
+
+[node name="Disparo" type="Node2D" parent="." unique_id=2097937373]
+script = ExtResource("2_qvhda")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=143065601]
+script = ExtResource("3_jpgx6")
+
+[node name="LabelSequencia" type="Label" parent="." unique_id=1345003997]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "1->2->3->4"
+
+[node name="TimerExibicaoSequencia" type="Timer" parent="." unique_id=127470387]
+
+[node name="HUD" parent="." unique_id=494623424 instance=ExtResource("4_3fxe8")]
+
+[editable path="HUD"]
