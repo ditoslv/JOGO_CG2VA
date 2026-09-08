@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FaseConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/Core/FaseConfig.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+nome_fase = "Fase 4 - Rotacao"
+quantidade_alvos_simultaneos = 3
+total_de_alvos = 10
+intervalo_spawn = 1.0
+velocidade_base = 0.0
+direcao_padrao = Vector2(0, 0)
+velocidade_angular_padrao = 3.0
+escala_min_padrao = 1.0
+escala_max_padrao = 1.0
+tempo_de_vida_padrao = 3.0
