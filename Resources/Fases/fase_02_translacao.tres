@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="FaseConfig" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/Core/FaseConfig.gd" id="1"]
+[ext_resource type="Script" uid="uid://ba21s4yrq1pdr" path="res://scripts/Core/FaseConfig.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
-nome_fase = "Fase 2 - Translacao"
+nome_fase = "Fase 2 - Translação"
 quantidade_alvos_simultaneos = 3
 total_de_alvos = 10
-intervalo_spawn = 1.1
-velocidade_base = 80.0
+intervalo_spawn = 1.2
+velocidade_base = 90.0
 direcao_padrao = Vector2(1, 0)
 velocidade_angular_padrao = 0.0
 escala_min_padrao = 1.0
