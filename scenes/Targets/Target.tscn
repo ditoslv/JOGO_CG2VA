@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://cyg2v6d3pvwo2"]
+[gd_scene load_steps=5 format=3 uid="uid://cyg2v6d3pvwo2"]
 
 [ext_resource type="Script" uid="uid://cm4no4rmy7uqs" path="res://scripts/Target/Target.gd" id="1_v1p5q"]
+[ext_resource type="Texture2D" uid="uid://dk8tuomsdnn3v" path="res://assents/sprites/Sprite_alvo.png" id="2_sprite"]
+[ext_resource type="Script" path="res://scripts/Target/TargetImpactoParticulas.gd" id="3_particulas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrivr"]
 radius = 34.132095
@@ -9,7 +11,24 @@ radius = 34.132095
 script = ExtResource("1_v1p5q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1250471567]
+scale = Vector2(0.14442465, 0.13385083)
+texture = ExtResource("2_sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892232909]
-position = Vector2(73, 49)
 shape = SubResource("CircleShape2D_xrivr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1830033708]
+script = ExtResource("3_particulas")
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 45.85
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+scale_amount_max = 10.0
+color = Color(0.80302876, 0, 0.104973994, 1)

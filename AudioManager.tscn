@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://gp11a8663xuq"]
 
 [ext_resource type="Script" uid="uid://2egr7a83fkxy" path="res://audio_manager.gd" id="1_2nh25"]
+[ext_resource type="AudioStream" uid="uid://btmokgfedpsa" path="res://audios/arrow-impact.mp3" id="2_sxe6l"]
+[ext_resource type="AudioStream" uid="uid://d323kbxkll7rp" path="res://audios/error-126627.mp3" id="3_mh7xs"]
+[ext_resource type="AudioStream" uid="uid://b4cnmd4elfvx5" path="res://audios/『 Frieren Beyond Journey's End 』Epic OST - Sorikai _ (youtube).mp3" id="4_wda1a"]
 
 [node name="AudioManager" type="Node" unique_id=135494414]
 script = ExtResource("1_2nh25")
 
 [node name="SFX_Acerto" type="AudioStreamPlayer" parent="." unique_id=1185378648]
+stream = ExtResource("2_sxe6l")
+
+[node name="SFX_Erro" type="AudioStreamPlayer" parent="." unique_id=577739684]
+stream = ExtResource("3_mh7xs")
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=2133037119]
+stream = ExtResource("4_wda1a")
+volume_db = -25.0
+autoplay = true

@@ -18,6 +18,7 @@ script = ExtResource("1_2f32m")
 script = ExtResource("1_l0h3n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mira" unique_id=534126409]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_8fgkk")
 
 [node name="Disparo" type="Node2D" parent="." unique_id=833316843]

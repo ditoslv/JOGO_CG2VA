@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c3qhpijirm4el"]
+
+[ext_resource type="Script" uid="uid://mnwpxoq0u81m" path="res://TESTES/Teste_core.gd" id="1_2f32m"]
+[ext_resource type="Script" uid="uid://csw655tiqt6cr" path="res://scripts/Core/Mira.gd" id="1_l0h3n"]
+[ext_resource type="Texture2D" uid="uid://d26oyh36jb5m0" path="res://SPRITES/MIRA.png" id="2_8fgkk"]
+[ext_resource type="Script" uid="uid://cllj5s26xrkvq" path="res://scripts/Core/Disparo.gd" id="2_jux5a"]
+[ext_resource type="Script" uid="uid://buup8ds55ltry" path="res://scripts/Core/TargetSpawner.gd" id="3_vcogu"]
+[ext_resource type="Script" uid="uid://qdxy1fd2bi5i" path="res://scripts/ui/menu.gd" id="7_46cfb"]
+[ext_resource type="PackedScene" uid="uid://dydgxgiy8lrrk" path="res://scenes/modes/order_mode.tscn" id="8_38t1j"]
+[ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="9_142bc"]
+[ext_resource type="PackedScene" uid="uid://bia2ga1ibfc4d" path="res://scenes/ui/result_screen.tscn" id="10_vxhi4"]
+
+[node name="TesteCore" type="Node2D" unique_id=427464315]
+script = ExtResource("1_2f32m")
+
+[node name="Mira" type="Node2D" parent="." unique_id=1937328153]
+script = ExtResource("1_l0h3n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mira" unique_id=534126409]
+texture = ExtResource("2_8fgkk")
+
+[node name="Disparo" type="Node2D" parent="." unique_id=833316843]
+script = ExtResource("2_jux5a")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=870228428]
+script = ExtResource("3_vcogu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=879149472]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1826590411]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Menu" type="Control" parent="." unique_id=580907947]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_46cfb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu" unique_id=2097245433]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Menu/VBoxContainer" unique_id=1332493251]
+layout_mode = 2
+text = "Solo"
+
+[node name="Button2" type="Button" parent="Menu/VBoxContainer" unique_id=2068690506]
+layout_mode = 2
+text = "1v1
+"
+
+[node name="Button3" type="Button" parent="Menu/VBoxContainer" unique_id=1608311938]
+layout_mode = 2
+text = "Ordem do Alvo"
+
+[node name="OrderMode" parent="." unique_id=1456624125 instance=ExtResource("8_38t1j")]
+
+[node name="HUD" parent="." unique_id=494623424 instance=ExtResource("9_142bc")]
+
+[node name="ResultScreen" parent="." unique_id=1989643837 instance=ExtResource("10_vxhi4")]
+
+[connection signal="pressed" from="Menu/VBoxContainer/Button" to="Menu" method="_on_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Button2" to="Menu" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/Button3" to="Menu" method="_on_button_3_pressed"]
+
+[editable path="OrderMode"]
+[editable path="OrderMode/HUD"]
+[editable path="HUD"]
+[editable path="ResultScreen"]
