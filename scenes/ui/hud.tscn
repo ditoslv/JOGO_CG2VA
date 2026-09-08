@@ -12,8 +12,9 @@ script = ExtResource("1_6ac2j")
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1769189701]
 custom_minimum_size = Vector2(-5, -5)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1029.0
+offset_right = 1134.0
+offset_bottom = 131.0
 
 [node name="LabelPontuacao" type="Label" parent="VBoxContainer" unique_id=238329125]
 layout_mode = 2

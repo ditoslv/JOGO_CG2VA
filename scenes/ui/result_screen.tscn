@@ -11,8 +11,10 @@ script = ExtResource("1_07uyp")
 
 [node name="PainelJogador1" type="VBoxContainer" parent="." unique_id=1587306857]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1030.0
+offset_top = 2.0
+offset_right = 1133.0
+offset_bottom = 133.0
 
 [node name="LabelPontuaçãoFinal" type="Label" parent="PainelJogador1" unique_id=1135401923]
 layout_mode = 2
