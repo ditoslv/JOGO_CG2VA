@@ -1,24 +1,21 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+	# Garante que o menu esteja pronto para receber os cliques.
 	pass
 
 
+# Botão Modo Solo
 func _on_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/modes/solo_mode.tscn")
 
 
+# Botão Modo 1v1
 func _on_button_2_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/modes/versus_mode.tscn")
 
 
-func _on_button_3_pressed():
+# Botão Modo Ordem do Alvo
+func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/modes/order_mode.tscn")
-	

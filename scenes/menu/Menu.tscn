@@ -11,6 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="9_2l3mi"]
 [ext_resource type="PackedScene" uid="uid://bia2ga1ibfc4d" path="res://scenes/ui/result_screen.tscn" id="10_aav4f"]
 
+[sub_resource type="GDScript" id="GDScript_wn3gm"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="TesteCore" type="Node2D" unique_id=427464315]
 script = ExtResource("1_h07w3")
 
@@ -60,6 +74,9 @@ layout_mode = 2
 text = "Ordem do Alvo"
 
 [node name="OrderMode" parent="." unique_id=1456624125 instance=ExtResource("8_1upmo")]
+
+[node name="Mira" parent="OrderMode" index="0" unique_id=1511470903]
+script = SubResource("GDScript_wn3gm")
 
 [node name="HUD" parent="." unique_id=494623424 instance=ExtResource("9_2l3mi")]
 

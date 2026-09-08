@@ -7,7 +7,7 @@ extends Node2D
 const TARGET_SCENE := preload("res://scenes/Targets/Target.tscn")
 
 # Área onde os alvos podem aparecer (ajuste conforme o tamanho da sua cena)
-var area_spawn: Rect2 = Rect2(Vector2(-300, -200), Vector2(600, 400))
+var area_spawn: Rect2 = Rect2(Vector2(100, 100), Vector2(800, 450))
 
 var quantidade_alvos: int = 3          # progressão: 3 -> 4-5 -> movimento -> rotação/escala
 var sequencia_correta: Array = []
@@ -123,9 +123,28 @@ func aplicar_penalidade() -> void:
 
 func rodada_concluida() -> void:
 	print("Sequência completa!")
-	quantidade_alvos += 1  # progressão de dificuldade
-	# AJUSTAR: aqui entra a chamada pra ResultScreen quando a rodada acabar de vez
-	iniciar_rodada()
+
+	# Para o cronômetro
+	hud.parar_cronometro()
+
+	# Guarda o tempo final antes de esconder o HUD
+	var tempo_final = hud.obter_tempo()
+
+	# Pega os resultados atuais da partida
+	var resultado = ScoreSystem.obter_resultado_final()
+
+	# Esconde o HUD
+	hud.hide()
+
+	# Carrega a tela de resultados
+	var result_scene = preload("res://scenes/ui/result_screen.tscn")
+	var result_screen = result_scene.instantiate()
+
+	# Adiciona a tela de resultados
+	add_child(result_screen)
+
+	# Mostra o resultado do jogador
+	result_screen.exibir_resultado_single(resultado, tempo_final)
 
 
 func _limpar_alvos_antigos() -> void:
