@@ -28,7 +28,6 @@ signal target_resolved(target: Node) # emitido nos dois casos acima -> usado pel
 
 @onready var _collision: CollisionShape2D = $CollisionShape2D
 @onready var _sprite: Sprite2D = $Sprite2D
-@onready var _particulas: CPUParticles2D = $Particulas
 
 
 func _ready() -> void:
@@ -94,8 +93,6 @@ func registrar_acerto() -> void:
 	is_active = false
 	_collision.disabled = true
 	_sprite.visible = false
-	if _particulas:
-		_particulas.restart()
 	target_hit.emit(pontos)
 	target_resolved.emit(self)
 
