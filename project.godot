@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ScoreSystem="*uid://dm4xt0f7q7c06"
 AudioManager="*uid://gp11a8663xuq"
+GameManager="*uid://djbm8f23tv48i"
 
 [display]
 

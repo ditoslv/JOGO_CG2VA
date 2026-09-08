@@ -7,9 +7,11 @@ extends Node2D
 const TARGET_SCENE := preload("res://scenes/Targets/Target.tscn")
 
 # Área onde os alvos podem aparecer (ajuste conforme o tamanho da sua cena)
-var area_spawn: Rect2 = Rect2(Vector2(100, 100), Vector2(800, 450))
+var area_spawn: Rect2
 
 var quantidade_alvos: int = 3          # progressão: 3 -> 4-5 -> movimento -> rotação/escala
+const NIVEL_MAXIMO: int = 4            # nº de rodadas até finalizar o modo (Seção D.3)
+var nivel_atual: int = 1
 var sequencia_correta: Array = []
 var indice_atual: int = 0
 var tempo_exibicao_sequencia: float = 3.0
@@ -17,6 +19,10 @@ var alvos_ativos: Array = []           # instâncias de Target nesta rodada
 
 
 func _ready() -> void:
+	var margem := 80.0
+	var tela := get_viewport_rect().size
+	area_spawn = Rect2(Vector2(margem, margem), tela - Vector2(margem * 2, margem * 2))
+
 	timer_exibicao.wait_time = tempo_exibicao_sequencia
 	timer_exibicao.one_shot = true
 	timer_exibicao.timeout.connect(_esconder_numeros)
@@ -122,29 +128,27 @@ func aplicar_penalidade() -> void:
 
 
 func rodada_concluida() -> void:
-	print("Sequência completa!")
+	print("Sequência completa! nivel_atual=%d NIVEL_MAXIMO=%d" % [nivel_atual, NIVEL_MAXIMO])
 
-	# Para o cronômetro
-	hud.parar_cronometro()
+	if nivel_atual >= NIVEL_MAXIMO:
+		finalizar_modo()
+		return
 
-	# Guarda o tempo final antes de esconder o HUD
-	var tempo_final = hud.obter_tempo()
+	nivel_atual += 1
+	quantidade_alvos += 1  # progressão de dificuldade
+	# TODO (Integrante A/C): a partir daqui a progressão deveria também variar
+	# o TIPO de alvo (movimento -> rotação/escala), não só a quantidade,
+	# usando a config de fase (FaseConfig.gd) em vez de código fixo aqui.
+	iniciar_rodada()
 
-	# Pega os resultados atuais da partida
-	var resultado = ScoreSystem.obter_resultado_final()
 
-	# Esconde o HUD
-	hud.hide()
-
-	# Carrega a tela de resultados
-	var result_scene = preload("res://scenes/ui/result_screen.tscn")
-	var result_screen = result_scene.instantiate()
-
-	# Adiciona a tela de resultados
-	add_child(result_screen)
-
-	# Mostra o resultado do jogador
-	result_screen.exibir_resultado_single(resultado, tempo_final)
+func finalizar_modo() -> void:
+	print("finalizar_modo() chamado")
+	_limpar_alvos_antigos()
+	GameManager.registrar_resultado_ordem(ScoreSystem.obter_resultado_final())
+	print("Resultado registrado, chamando ir_para_resultado()")
+	GameManager.ir_para_resultado()
+	print("ir_para_resultado() retornou")
 
 
 func _limpar_alvos_antigos() -> void:
