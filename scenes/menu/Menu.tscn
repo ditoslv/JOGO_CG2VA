@@ -3,35 +3,35 @@
 [ext_resource type="Script" uid="uid://qdxy1fd2bi5i" path="res://scripts/ui/menu.gd" id="1_menu"]
 [ext_resource type="Texture2D" path="res://assents/sprites/Painel_UI.png" id="2_painel"]
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="CanvasLayer"]
+
+[node name="Conteudo" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -110.0
-offset_right = 130.0
-offset_bottom = 110.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 
-[node name="PainelMenu" type="NinePatchRect" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="Conteudo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PainelMenu" type="NinePatchRect" parent="Conteudo/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(260, 220)
 texture = ExtResource("2_painel")
 patch_margin_left = 64
 patch_margin_top = 64
 patch_margin_right = 64
 patch_margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PainelMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/CenterContainer/PainelMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,19 +44,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="PainelMenu/VBoxContainer"]
+[node name="Button" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "Solo"
 
-[node name="Button2" type="Button" parent="PainelMenu/VBoxContainer"]
+[node name="Button2" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "1v1
 "
 
-[node name="Button3" type="Button" parent="PainelMenu/VBoxContainer"]
+[node name="Button3" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "Ordem do Alvo"
 
-[connection signal="pressed" from="PainelMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="PainelMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PainelMenu/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button" to="Conteudo" method="_on_button_pressed"]
+[connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button2" to="Conteudo" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button3" to="Conteudo" method="_on_button_3_pressed"]
