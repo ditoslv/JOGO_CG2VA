@@ -101,7 +101,7 @@ func _definir_vencedor(dados_jogador1: Dictionary, dados_jogador2: Dictionary) -
 
 func _on_botao_voltar_pressed() -> void:
 	voltar_ao_menu_solicitado.emit()
-	get_tree().change_scene_to_file("res://main.tscn")
+	GameManager.voltar_ao_menu()
 
 
 ## Volta pro MESMO modo que acabou de terminar, do zero — não dá pra usar

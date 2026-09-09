@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bia2ga1ibfc4d"]
 
 [ext_resource type="Script" uid="uid://c1ejisqqxcn4r" path="res://scripts/ui/result_screen.gd" id="1_07uyp"]
-[ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="2_vmyrh"]
+[ext_resource type="PackedScene" path="res://scenes/Core/Background.tscn" id="2_vmyrh"]
 
 [node name="ResultScreen" type="Control" unique_id=471456605]
 layout_mode = 3

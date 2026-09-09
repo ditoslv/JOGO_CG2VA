@@ -13,7 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_6ac2j")
 
 [node name="Camada" type="CanvasLayer" parent="." unique_id=1073530628]
-follow_viewport_enabled = true
+follow_viewport_enabled = false
 
 [node name="PainelPontuacao" type="NinePatchRect" parent="Camada" unique_id=1984365871]
 offset_left = 919.0

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Core/Disparo.gd" id="4"]
 [ext_resource type="Script" path="res://scripts/Core/TargetSpawner.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/Targets/Target.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/Core/Background.tscn" id="7"]
 [ext_resource type="Shader" path="res://SPRITES/crosshair.gdshader" id="8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mira"]
@@ -45,5 +45,3 @@ target_scene = ExtResource("6")
 
 [node name="Cronometro" type="Timer" parent="."]
 one_shot = true
-
-[node name="HUD" type="CanvasLayer" parent="."]

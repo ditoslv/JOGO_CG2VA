@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assents/sprites/img_de_parede(final).jpg" id="1_4ibrk"]
+
+[node name="Background" type="Node2D"]
+
+[node name="ImgDeParede(final)" type="Sprite2D" parent="."]
+position = Vector2(584.49994, 334.75)
+scale = Vector2(0.43912712, 0.4059436)
+texture = ExtResource("1_4ibrk")

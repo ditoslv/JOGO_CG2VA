@@ -32,7 +32,12 @@ var _tempo_escala: float = 0.0
 
 # Estado interno só do movimento circular (fase de "rotação pura",
 # ver _aplicar_movimento_circular() abaixo).
-const RAIO_ORBITAL: float = 70.0
+# NOME DIFERENTE DE PROPÓSITO: isto controla o raio do CÍRCULO que o nó
+# inteiro descreve na Fase 4 (rotação pura). É diferente de "raio_orbita"
+# (a propriedade exportada acima, do ditoslv) — aquela desloca só o
+# sprite/colisão em torno do eixo do nó, usada na Fase 6 (combinação).
+# São dois efeitos visuais distintos; não são a mesma coisa por baixo.
+const RAIO_ORBITA_FASE_ROTACAO: float = 70.0
 var _centro_orbital: Vector2 = Vector2.ZERO
 var _angulo_orbital: float = 0.0
 
@@ -93,7 +98,7 @@ func _aplicar_movimento(delta: float) -> void:
 ## visível tanto na trajetória quanto na orientação do alvo.
 func _aplicar_movimento_circular(delta: float) -> void:
 	_angulo_orbital += velocidade_angular * delta
-	var offset := Vector2(RAIO_ORBITAL, 0.0).rotated(_angulo_orbital)
+	var offset := Vector2(RAIO_ORBITA_FASE_ROTACAO, 0.0).rotated(_angulo_orbital)
 	position = _centro_orbital + offset
 	rotation += velocidade_angular * delta
 
