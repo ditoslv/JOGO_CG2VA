@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bia2ga1ibfc4d"]
 
 [ext_resource type="Script" uid="uid://c1ejisqqxcn4r" path="res://scripts/ui/result_screen.gd" id="1_07uyp"]
+[ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="2_vmyrh"]
 
 [node name="ResultScreen" type="Control" unique_id=471456605]
 layout_mode = 3
@@ -11,15 +12,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_07uyp")
 
+[node name="Background" parent="." unique_id=479575969 instance=ExtResource("2_vmyrh")]
+
 [node name="Camada" type="CanvasLayer" parent="." unique_id=793363367]
 
 [node name="Fundo" type="ColorRect" parent="Camada" unique_id=277860977]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 443.0
+offset_top = 212.0
+offset_right = -453.0
+offset_bottom = -223.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.7)
+color = Color(0, 0, 0, 0.62600005)
 
 [node name="CenterContainer" type="CenterContainer" parent="Camada" unique_id=1994177411]
 anchors_preset = 15
