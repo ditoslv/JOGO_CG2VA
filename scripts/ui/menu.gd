@@ -12,7 +12,6 @@ extends Control
 
 const CENA_SOLO := "res://scenes/modes/solo_mode.tscn"
 const CENA_1V1 := "res://scenes/modes/VersusMode.tscn"
-const CENA_ORDEM_DO_ALVO := "res://scenes/modes/order_mode.tscn"
 
 
 func _ready() -> void:
@@ -25,7 +24,3 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	get_tree().change_scene_to_file(CENA_1V1)
-
-
-func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_file(CENA_ORDEM_DO_ALVO)

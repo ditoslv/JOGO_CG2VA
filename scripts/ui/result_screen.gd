@@ -3,13 +3,13 @@ class_name ResultScreen
 
 ## ============================================================
 ## CONTRATO PÚBLICO DESTA CENA — combinado com a equipe.
-## Quem orquestra o fim de uma rodada (SoloMode, VersusMode,
-## OrderMode) deve chamar UMA das funções abaixo para exibir o
+## Quem orquestra o fim de uma rodada (SoloMode ou VersusMode) deve chamar
+## UMA das funções abaixo para exibir o
 ## resultado. Nenhum outro script deve acessar os Labels
 ## diretamente.
 ##
 ## - mostrar_resultado(dados)                  -> usada pelo SoloMode (A)
-## - exibir_resultado_solo(dados)              -> usada pelo OrderMode (B)
+## - exibir_resultado_solo(dados)              -> resultado de 1 jogador
 ##   (as duas fazem a mesma coisa; "mostrar_resultado" existe só
 ##   pra bater com o nome que o SoloMode já usa)
 ## - exibir_resultado_1v1(dados_p1, dados_p2)   -> 1v1
@@ -33,10 +33,7 @@ func _ready() -> void:
 	botao_voltar.pressed.connect(_on_botao_voltar_pressed)
 	botao_jogar_de_novo.pressed.connect(_on_botao_jogar_de_novo_pressed)
 
-	if GameManager.modo_atual == "ordem":
-		exibir_resultado_solo(GameManager.resultado_jogador_1)
-
-	elif GameManager.modo_atual == "solo":
+	if GameManager.modo_atual == "solo":
 		exibir_resultado_solo(GameManager.resultado_jogador_1)
 
 	elif GameManager.modo_atual == "1v1":
@@ -46,7 +43,7 @@ func _ready() -> void:
 		)
 
 
-## Chamada pelo Modo Solo e pelo Modo Ordem do Alvo ao final da rodada.
+## Chamada para exibir o resultado de uma rodada de um jogador.
 func exibir_resultado_solo(dados: Dictionary) -> void:
 	painel_jogador2.visible = false
 	label_vencedor.visible = false
@@ -112,8 +109,6 @@ func _on_botao_jogar_de_novo_pressed() -> void:
 	match GameManager.modo_atual:
 		"solo":
 			get_tree().change_scene_to_file("res://scenes/modes/solo_mode.tscn")
-		"ordem":
-			get_tree().change_scene_to_file("res://scenes/modes/order_mode.tscn")
 		_:
 			push_warning("ResultScreen: 'Jogar de novo' sem modo 1v1 implementado ainda; voltando ao menu.")
 			get_tree().change_scene_to_file("res://scenes/menu/Menu.tscn")

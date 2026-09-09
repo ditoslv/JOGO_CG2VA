@@ -4,7 +4,7 @@ extends CanvasLayer
 ## Painel de pausa — "Pausa e retomada" (cena PauseMenu, Seção
 ## G.2 do planejamento).
 ##
-## Qualquer modo (Solo, 1v1, Ordem do Alvo) pode instanciar esta
+## Qualquer modo (Solo ou 1v1) pode instanciar esta
 ## cena como filha e não precisa fazer mais nada: ela mesma
 ## escuta o ESC, pausa a árvore (get_tree().paused) e cuida da
 ## navegação de volta ao menu.

@@ -3,8 +3,8 @@ extends Node
 ##   Path: res://scripts/Managers/GameManager.gd
 ##   Node Name: GameManager
 ##
-## Guarda o resultado da rodada que acabou de terminar (Solo, 1v1 ou Ordem
-## do Alvo) para que a ResultScreen consiga ler os dados depois da troca de
+## Guarda o resultado da rodada que acabou de terminar (Solo ou 1v1) para que
+## a ResultScreen consiga ler os dados depois da troca de
 ## cena — o ScoreSystem sozinho não é suficiente pra isso porque ele é
 ## resetado a cada nova rodada.
 
@@ -16,13 +16,6 @@ var resultado_jogador_2: Dictionary = {}
 ## Chamar ao final do Modo Solo (ou de qualquer modo de 1 jogador).
 func registrar_resultado_solo(resultado: Dictionary) -> void:
 	modo_atual = "solo"
-	resultado_jogador_1 = resultado
-	resultado_jogador_2 = {}
-
-
-## Chamar ao final do Modo Ordem do Alvo.
-func registrar_resultado_ordem(resultado: Dictionary) -> void:
-	modo_atual = "ordem"
 	resultado_jogador_1 = resultado
 	resultado_jogador_2 = {}
 

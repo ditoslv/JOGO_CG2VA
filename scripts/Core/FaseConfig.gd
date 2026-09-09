@@ -1,6 +1,6 @@
 extends Resource
 class_name FaseConfig
-## Cada fase do Modo Solo (e cada nível do Modo Ordem do Alvo,
+## Cada fase do Modo Solo,
 ## reaproveitando esta mesma classe) é um arquivo .tres desta classe,
 ## criado pelo editor: botão direito em resources/fases/ > New Resource
 ## > FaseConfig.

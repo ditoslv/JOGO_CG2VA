@@ -1,7 +1,7 @@
 extends Node2D
 class_name TargetSpawner
 
-## Reutilizado por Solo, 1v1 (via Solo) e Ordem do Alvo.
+## Reutilizado por Solo e 1v1.
 ## Nenhuma lógica de "qual modo está rodando" deve entrar aqui —
 ## tudo que muda o comportamento vem de FaseConfig.
 
@@ -22,7 +22,7 @@ var _timer_spawn: float = 0.0
 signal fase_concluida()
 
 
-## Chamada pelo SoloMode (ou OrderMode) ao iniciar cada fase/nível.
+## Chamada pelo SoloMode ao iniciar cada fase/nível.
 ## SoloMode só chama isto depois que fase_concluida for emitido pela fase
 ## anterior — e fase_concluida só é emitido quando _alvos_restantes chega a
 ## zero, ou seja, quando não sobra nenhum alvo (ativo ou por nascer) da fase

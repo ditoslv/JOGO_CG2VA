@@ -57,7 +57,7 @@ func tocar_erro() -> void:
 
 
 ## Toca a música de fundo em loop. Chame uma vez ao entrar em qualquer
-## modo (Solo, 1v1, Ordem do Alvo) — todos reaproveitam a mesma trilha.
+## modo (Solo ou 1v1) — ambos reaproveitam a mesma trilha.
 func tocar_musica_fundo() -> void:
 	if not _musica.playing:
 		_musica.play()

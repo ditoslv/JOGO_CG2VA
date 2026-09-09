@@ -53,10 +53,5 @@ layout_mode = 2
 text = "1v1
 "
 
-[node name="Button3" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer" unique_id=1304105626]
-layout_mode = 2
-text = "Ordem do Alvo"
-
 [connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button" to="Conteudo" method="_on_button_pressed"]
 [connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button2" to="Conteudo" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Conteudo/CenterContainer/PainelMenu/VBoxContainer/Button3" to="Conteudo" method="_on_button_3_pressed"]

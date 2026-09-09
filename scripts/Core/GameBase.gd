@@ -2,10 +2,10 @@ extends Node2D
 class_name GameBase
 
 ## Cena-núcleo compartilhada pelos três modos (Solo, 1v1 via Solo,
-## Ordem do Alvo). Reúne mira, disparo, spawner e cronômetro.
+## 1v1). Reúne mira, disparo, spawner e cronômetro.
 ##
 ## Quem orquestra fases e rodadas (SoloMode.gd, e depois VersusMode/
-## OrderMode) deve chamar os métodos abaixo, em vez de acessar
+## VersusMode) deve chamar os métodos abaixo, em vez de acessar
 ## $Spawner ou $Cronometro diretamente — isso mantém a GameBase como
 ## o único ponto de contato entre "o que orquestra a partida" e
 ## "os sistemas do Core".
