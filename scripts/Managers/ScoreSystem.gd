@@ -76,3 +76,5 @@ func obter_resultado_final() -> Dictionary:
 
 func _emitir_atualizacao() -> void:
 	score_updated.emit(obter_resultado_final())
+	
+	

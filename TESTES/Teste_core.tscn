@@ -83,7 +83,6 @@ layout_mode = 2
 text = "Ordem do Alvo"
 
 [node name="OrderMode" parent="." unique_id=1456624125 instance=ExtResource("8_38t1j")]
-iniciar_automaticamente = false
 
 [node name="HUD" parent="." unique_id=494623424 instance=ExtResource("9_142bc")]
 
