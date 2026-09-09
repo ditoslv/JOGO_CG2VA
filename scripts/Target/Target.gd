@@ -16,6 +16,15 @@ class_name Target
 @export var escala_max: float = 1.0
 @export var tempo_de_vida: float = 3.0
 
+## Deslocamento do sprite/colisão em relação ao eixo de rotação do nó.
+## Em 0, o alvo gira exatamente no próprio centro. Usado para o caso de
+## "desloca E rotaciona ao mesmo tempo" (ex.: Fase 6) — sem isso, girar
+## em torno do próprio centro enquanto anda em linha reta não parece
+## girar de verdade, só "desliza rodando". Diferente do giro em órbita
+## da Fase 4 (_aplicar_movimento_circular), que já resolve isso à parte
+## para o caso de rotação pura.
+@export var raio_orbita: float = 0.0
+
 # --- Estado interno ---
 var is_active: bool = false
 var _tempo_restante: float = 0.0
@@ -99,6 +108,7 @@ func ativar(config: Dictionary = {}) -> void:
 	escala_min = config.get("escala_min", escala_min)
 	escala_max = config.get("escala_max", escala_max)
 	tempo_de_vida = config.get("tempo_de_vida", tempo_de_vida)
+	raio_orbita = config.get("raio_orbita", raio_orbita)
 
 	if config.has("posicao"):
 		global_position = config["posicao"]
@@ -112,6 +122,16 @@ func ativar(config: Dictionary = {}) -> void:
 	_collision.disabled = false
 	scale = Vector2.ONE
 	rotation = 0.0
+
+	var offset := Vector2(raio_orbita, 0.0)
+	_sprite.position = offset
+	_collision.position = offset
+	# Busca defensiva (get_node_or_null): o nome desse nó já mudou uma
+	# vez por causa da Pessoa 3 (ver TargetImpactoParticulas.gd). Se ele
+	# não existir ou for renomeado de novo, isto não deve quebrar o resto.
+	var particulas := get_node_or_null("CPUParticles2D")
+	if particulas:
+		particulas.position = offset
 
 
 ## Chamada pelo sistema de disparo (Disparo.gd) quando este alvo é atingido.

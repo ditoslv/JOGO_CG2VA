@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1")
 nome_fase = "Fase 4 - Rotação"
+mensagem_notificacao = "Roda-Roda-Vira ;)"
 quantidade_alvos_simultaneos = 4
 total_de_alvos = 12
 intervalo_spawn = 1.0

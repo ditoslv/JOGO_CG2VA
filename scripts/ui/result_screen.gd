@@ -26,10 +26,12 @@ signal voltar_ao_menu_solicitado()
 @onready var painel_jogador2: VBoxContainer = $Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2
 @onready var label_vencedor: Label = $Camada/CenterContainer/VBoxPrincipal/LabelVencedor
 @onready var botao_voltar: Button = $Camada/CenterContainer/VBoxPrincipal/Button
+@onready var botao_jogar_de_novo: Button = $Camada/CenterContainer/VBoxPrincipal/BotaoJogarDeNovo
 
 
 func _ready() -> void:
 	botao_voltar.pressed.connect(_on_botao_voltar_pressed)
+	botao_jogar_de_novo.pressed.connect(_on_botao_jogar_de_novo_pressed)
 
 	if GameManager.modo_atual == "ordem":
 		exibir_resultado_solo(GameManager.resultado_jogador_1)
@@ -100,3 +102,18 @@ func _definir_vencedor(dados_jogador1: Dictionary, dados_jogador2: Dictionary) -
 func _on_botao_voltar_pressed() -> void:
 	voltar_ao_menu_solicitado.emit()
 	get_tree().change_scene_to_file("res://main.tscn")
+
+
+## Volta pro MESMO modo que acabou de terminar, do zero — não dá pra usar
+## reload_current_scene() aqui porque a cena atual é a ResultScreen (uma
+## cena própria, trocada via GameManager.ir_para_resultado()), não o modo
+## em si. GameManager.modo_atual guarda qual foi jogado por último.
+func _on_botao_jogar_de_novo_pressed() -> void:
+	match GameManager.modo_atual:
+		"solo":
+			get_tree().change_scene_to_file("res://scenes/modes/solo_mode.tscn")
+		"ordem":
+			get_tree().change_scene_to_file("res://scenes/modes/order_mode.tscn")
+		_:
+			push_warning("ResultScreen: 'Jogar de novo' sem modo 1v1 implementado ainda; voltando ao menu.")
+			get_tree().change_scene_to_file("res://scenes/menu/Menu.tscn")

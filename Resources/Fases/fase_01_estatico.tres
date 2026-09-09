@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1")
 nome_fase = "Fase 1 - Estatico"
+mensagem_notificacao = "Eles começam quietinhos..."
 quantidade_alvos_simultaneos = 3
 total_de_alvos = 10
 intervalo_spawn = 1.2

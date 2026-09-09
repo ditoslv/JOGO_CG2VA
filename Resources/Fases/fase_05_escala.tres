@@ -1,16 +1,15 @@
-[gd_resource type="Resource" script_class="FaseConfig" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="FaseConfig" format=3 uid="uid://b7g7cpchvmled"]
 
 [ext_resource type="Script" uid="uid://ba21s4yrq1pdr" path="res://scripts/Core/FaseConfig.gd" id="1"]
 
 [resource]
 script = ExtResource("1")
 nome_fase = "Fase 5 - Escala"
+mensagem_notificacao = "E se eles pulassem correndo?"
 quantidade_alvos_simultaneos = 4
 total_de_alvos = 12
-intervalo_spawn = 1.0
-velocidade_base = 0.0
-direcao_padrao = Vector2(0, 0)
-velocidade_angular_padrao = 0.0
+velocidade_base = 90.0
+direcao_padrao = Vector2(1, 0)
 escala_min_padrao = 0.6
 escala_max_padrao = 1.6
 tempo_de_vida_padrao = 3.5

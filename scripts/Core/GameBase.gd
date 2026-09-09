@@ -16,11 +16,25 @@ signal fase_concluida()
 
 @onready var spawner: TargetSpawner = $Spawner
 @onready var cronometro: Timer = $Cronometro
+@onready var disparo: Disparo = $Disparo
 
 
 func _ready() -> void:
 	_ajustar_area_de_spawn()
 	spawner.fase_concluida.connect(func(): fase_concluida.emit())
+
+
+## Chamada por quem orquestra o modo (SoloMode) assim que souber onde
+## fica a área ocupada pelo HUD de estatísticas — nenhum alvo nasce ali.
+func definir_area_excluida(rect: Rect2) -> void:
+	spawner.area_excluida = rect
+
+
+## Para tudo (disparo e cronômetro) sem destruir nada — usado quando a
+## rodada termina e a tela de resultados assume a tela inteira.
+func encerrar() -> void:
+	disparo.ativo = false
+	cronometro.stop()
 
 
 ## Limita onde os alvos podem nascer ao tamanho real da janela (com uma

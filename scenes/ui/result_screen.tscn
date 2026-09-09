@@ -101,3 +101,7 @@ text = "TempoFinal"
 [node name="Button" type="Button" parent="Camada/CenterContainer/VBoxPrincipal" unique_id=1682591281]
 layout_mode = 2
 text = "Voltar ao Menu"
+
+[node name="BotaoJogarDeNovo" type="Button" parent="Camada/CenterContainer/VBoxPrincipal" unique_id=1682591282]
+layout_mode = 2
+text = "Jogar de novo"

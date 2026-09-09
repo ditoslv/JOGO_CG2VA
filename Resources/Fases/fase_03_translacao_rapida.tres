@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1")
 nome_fase = "Fase 3 - Translação Rápida"
+mensagem_notificacao = "ELES APRENDERAM A CORRER!!"
 quantidade_alvos_simultaneos = 4
 total_de_alvos = 12
 intervalo_spawn = 1.0

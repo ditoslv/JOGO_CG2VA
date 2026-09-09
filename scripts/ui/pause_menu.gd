@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 ## ============================================================
 ## Painel de pausa — "Pausa e retomada" (cena PauseMenu, Seção
@@ -8,6 +8,15 @@ extends Control
 ## cena como filha e não precisa fazer mais nada: ela mesma
 ## escuta o ESC, pausa a árvore (get_tree().paused) e cuida da
 ## navegação de volta ao menu.
+##
+## É um CanvasLayer (não mais um Control puro) com "layer" alto de
+## propósito: antes disso, o painel de pausa nascia na mesma camada
+## de canvas que o jogo (Mira, alvos) e do HUD (que já usa seu
+## próprio CanvasLayer). Resultado: mesmo com visible = true e o
+## jogo de fato pausado, o conteúdo do jogo continuava desenhado por
+## cima da tela de pausa em vez de ficar coberto por ela. Um
+## CanvasLayer com layer maior que o do HUD garante que a pausa
+## sempre desenhe por cima de tudo.
 ## ============================================================
 
 signal retomar_solicitado()
