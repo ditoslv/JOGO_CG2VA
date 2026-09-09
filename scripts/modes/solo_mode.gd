@@ -41,7 +41,7 @@ func _on_fase_concluida() -> void:
 
 
 func _finalizar_rodada() -> void:
-	var resultado := ScoreSystem.obter_resultado_final()
+	var resultado: Dictionary = ScoreSystem.obter_resultado_final()
 
 	GameManager.registrar_resultado_solo(resultado)
 	GameManager.ir_para_resultado()

@@ -185,7 +185,7 @@ func _finalizar_partida() -> void:
 	_limpar_alvos_antigos()
 	label_sequencia.visible = false
 	
-	var resultado := ScoreSystem.obter_resultado_final()
+	var resultado: Dictionary = ScoreSystem.obter_resultado_final()
 	GameManager.registrar_resultado_ordem(resultado)
 	GameManager.ir_para_resultado()
 

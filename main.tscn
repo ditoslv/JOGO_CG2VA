@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://dyle7bxwpfxi5"]
 
-[ext_resource type="PackedScene" uid="uid://c8jui1uifm67w" path="res://scenes/menu/Menu.tscn" id="1_menu"]
+[ext_resource type="PackedScene" uid="uid://bukq5cpybvrge" path="res://scenes7/background.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c8jui1uifm67w" path="res://TESTES/Menu.tscn" id="1_menu"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=417282247]
 
-[node name="Menu" parent="." instance=ExtResource("1_menu")]
+[node name="Background" parent="." unique_id=479575969 instance=ExtResource("1_0xm2m")]
+
+[node name="Menu" parent="." unique_id=976226697 instance=ExtResource("1_menu")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 561.0
+offset_top = 323.0
+offset_right = 561.0
+offset_bottom = 323.0
+grow_horizontal = 1
+grow_vertical = 1
