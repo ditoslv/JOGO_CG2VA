@@ -6,6 +6,7 @@ extends Node2D
 
 const TARGET_SCENE := preload("res://scenes/Targets/Target.tscn")
 const RESULT_SCREEN_SCENE := preload("res://scenes/ui/result_screen.tscn")
+const PAUSE_MENU_SCENE := preload("res://scenes/ui/pause_menu.tscn")
 
 # Área onde os alvos podem aparecer (ajuste conforme o tamanho da sua cena)
 var area_spawn: Rect2 = Rect2(Vector2(-300, -200), Vector2(600, 400))
@@ -46,6 +47,10 @@ func _ready() -> void:
 	_tela_resultado = RESULT_SCREEN_SCENE.instantiate()
 	_tela_resultado.visible = false
 	add_child(_tela_resultado)
+
+	# PauseMenu cuida de si mesmo (escuta ESC internamente) — só
+	# precisa ser instanciado como filha do modo.
+	add_child(PAUSE_MENU_SCENE.instantiate())
 
 	if not iniciar_automaticamente:
 		return

@@ -1,41 +1,9 @@
 [gd_scene format=3 uid="uid://c8jui1uifm67w"]
 
-[ext_resource type="Script" uid="uid://mnwpxoq0u81m" path="res://TESTES/Teste_core.gd" id="1_h07w3"]
-[ext_resource type="Script" uid="uid://csw655tiqt6cr" path="res://scripts/Core/Mira.gd" id="2_s7eeu"]
-[ext_resource type="Texture2D" uid="uid://d26oyh36jb5m0" path="res://SPRITES/MIRA.png" id="3_xjbkn"]
-[ext_resource type="Script" uid="uid://cllj5s26xrkvq" path="res://scripts/Core/Disparo.gd" id="4_5crc3"]
-[ext_resource type="Script" uid="uid://buup8ds55ltry" path="res://scripts/Core/TargetSpawner.gd" id="5_eesgj"]
-[ext_resource type="PackedScene" uid="uid://cyg2v6d3pvwo2" path="res://scenes/Targets/Target.tscn" id="6_741od"]
-[ext_resource type="Script" uid="uid://qdxy1fd2bi5i" path="res://scripts/ui/menu.gd" id="7_r3q2r"]
-[ext_resource type="PackedScene" uid="uid://dydgxgiy8lrrk" path="res://scenes/modes/order_mode.tscn" id="8_1upmo"]
-[ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="9_2l3mi"]
-[ext_resource type="PackedScene" uid="uid://bia2ga1ibfc4d" path="res://scenes/ui/result_screen.tscn" id="10_aav4f"]
-[ext_resource type="Texture2D" path="res://assents/sprites/Painel_UI.png" id="11_painel"]
+[ext_resource type="Script" uid="uid://qdxy1fd2bi5i" path="res://scripts/ui/menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" path="res://assents/sprites/Painel_UI.png" id="2_painel"]
 
-[node name="TesteCore" type="Node2D" unique_id=427464315]
-script = ExtResource("1_h07w3")
-
-[node name="Mira" type="Node2D" parent="." unique_id=1937328153]
-script = ExtResource("2_s7eeu")
-
-[node name="Sprite2D" type="Sprite2D" parent="Mira" unique_id=534126409]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_xjbkn")
-
-[node name="Disparo" type="Node2D" parent="." unique_id=833316843]
-script = ExtResource("4_5crc3")
-
-[node name="Spawner" type="Node2D" parent="." unique_id=870228428]
-script = ExtResource("5_eesgj")
-target_scene = ExtResource("6_741od")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=879149472]
-
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=1826590411]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Menu" type="Control" parent="." unique_id=580907947]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,22 +16,22 @@ offset_right = 130.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_r3q2r")
+script = ExtResource("1_menu")
 
-[node name="PainelMenu" type="NinePatchRect" parent="Menu" unique_id=768245113]
+[node name="PainelMenu" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_painel")
+texture = ExtResource("2_painel")
 patch_margin_left = 64
 patch_margin_top = 64
 patch_margin_right = 64
 patch_margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PainelMenu" unique_id=2097245433]
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,30 +44,19 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Menu/PainelMenu/VBoxContainer" unique_id=1332493251]
+[node name="Button" type="Button" parent="PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "Solo"
 
-[node name="Button2" type="Button" parent="Menu/PainelMenu/VBoxContainer" unique_id=2068690506]
+[node name="Button2" type="Button" parent="PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "1v1
 "
 
-[node name="Button3" type="Button" parent="Menu/PainelMenu/VBoxContainer" unique_id=1608311938]
+[node name="Button3" type="Button" parent="PainelMenu/VBoxContainer"]
 layout_mode = 2
 text = "Ordem do Alvo"
 
-[node name="OrderMode" parent="." unique_id=1456624125 instance=ExtResource("8_1upmo")]
-
-[node name="HUD" parent="." unique_id=494623424 instance=ExtResource("9_2l3mi")]
-
-[node name="ResultScreen" parent="." unique_id=1989643837 instance=ExtResource("10_aav4f")]
-
-[connection signal="pressed" from="Menu/PainelMenu/VBoxContainer/Button" to="Menu" method="_on_button_pressed"]
-[connection signal="pressed" from="Menu/PainelMenu/VBoxContainer/Button2" to="Menu" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Menu/PainelMenu/VBoxContainer/Button3" to="Menu" method="_on_button_3_pressed"]
-
-[editable path="OrderMode"]
-[editable path="OrderMode/HUD"]
-[editable path="HUD"]
-[editable path="ResultScreen"]
+[connection signal="pressed" from="PainelMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PainelMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PainelMenu/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
