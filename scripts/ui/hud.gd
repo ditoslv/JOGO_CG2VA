@@ -1,10 +1,10 @@
 extends Control
 
-@onready var painel_pontuacao: NinePatchRect = $PainelPontuacao
-@onready var label_pontuacao = $PainelPontuacao/VBoxContainer/LabelPontuacao
-@onready var label_acertos = $PainelPontuacao/VBoxContainer/LabelAcertos
-@onready var label_erros = $PainelPontuacao/VBoxContainer/LabelErros
-@onready var label_precisao = $PainelPontuacao/VBoxContainer/LabelPrecisao
+@onready var painel_pontuacao: NinePatchRect = $Camada/PainelPontuacao
+@onready var label_pontuacao = $Camada/PainelPontuacao/VBoxContainer/LabelPontuacao
+@onready var label_acertos = $Camada/PainelPontuacao/VBoxContainer/LabelAcertos
+@onready var label_erros = $Camada/PainelPontuacao/VBoxContainer/LabelErros
+@onready var label_precisao = $Camada/PainelPontuacao/VBoxContainer/LabelPrecisao
 
 ## Margem (em pixels) entre o painel e a borda direita/superior da tela.
 @export var margem_borda: float = 20.0

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c8jui1uifm67w"]
 
 [ext_resource type="Script" uid="uid://qdxy1fd2bi5i" path="res://scripts/ui/menu.gd" id="1_menu"]
-[ext_resource type="Texture2D" path="res://assents/sprites/Painel_UI.png" id="2_painel"]
+[ext_resource type="Texture2D" uid="uid://coglrs1gxd5re" path="res://assents/sprites/Painel_UI.png" id="2_painel"]
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" unique_id=1607295484]
 
-[node name="Conteudo" type="Control" parent="."]
+[node name="Conteudo" type="Control" parent="." unique_id=669720783]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 
-[node name="CenterContainer" type="CenterContainer" parent="Conteudo"]
+[node name="CenterContainer" type="CenterContainer" parent="Conteudo" unique_id=946039025]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,16 +22,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PainelMenu" type="NinePatchRect" parent="Conteudo/CenterContainer"]
-layout_mode = 2
+[node name="PainelMenu" type="NinePatchRect" parent="Conteudo/CenterContainer" unique_id=1671781171]
 custom_minimum_size = Vector2(260, 220)
+layout_mode = 2
 texture = ExtResource("2_painel")
 patch_margin_left = 64
 patch_margin_top = 64
 patch_margin_right = 64
 patch_margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/CenterContainer/PainelMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/CenterContainer/PainelMenu" unique_id=1384143182]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,16 +44,16 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
+[node name="Button" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer" unique_id=1476838331]
 layout_mode = 2
 text = "Solo"
 
-[node name="Button2" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
+[node name="Button2" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer" unique_id=267822994]
 layout_mode = 2
 text = "1v1
 "
 
-[node name="Button3" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer"]
+[node name="Button3" type="Button" parent="Conteudo/CenterContainer/PainelMenu/VBoxContainer" unique_id=1304105626]
 layout_mode = 2
 text = "Ordem do Alvo"
 

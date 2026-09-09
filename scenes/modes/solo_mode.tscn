@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://dnqae3hy277k4" path="res://scripts/modes/solo_mode.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/Core/GameBase.tscn" id="2"]
 [ext_resource type="Script" uid="uid://ba21s4yrq1pdr" path="res://scripts/Core/FaseConfig.gd" id="2_wx5i2"]
-[ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="3"]
 [ext_resource type="Resource" path="res://Resources/Fases/fase_01_estatico.tres" id="3_ufkr0"]
-[ext_resource type="PackedScene" uid="uid://bia2ga1ibfc4d" path="res://scenes/ui/result_screen.tscn" id="4"]
 [ext_resource type="Resource" path="res://Resources/Fases/fase_02_translacao.tres" id="4_s2hho"]
 [ext_resource type="Resource" path="res://Resources/Fases/fase_03_translacao_rapida.tres" id="5_j35qj"]
 [ext_resource type="Resource" path="res://Resources/Fases/fase_04_rotacao.tres" id="6_mlie4"]
@@ -18,7 +16,4 @@ fases = Array[ExtResource("2_wx5i2")]([ExtResource("3_ufkr0"), ExtResource("4_s2
 
 [node name="GameBase" parent="." unique_id=506203168 instance=ExtResource("2")]
 
-[node name="HUD" parent="." unique_id=1033262690 instance=ExtResource("3")]
-
-[node name="ResultScreen" parent="." unique_id=1963716579 instance=ExtResource("4")]
-visible = false
+[editable path="GameBase"]

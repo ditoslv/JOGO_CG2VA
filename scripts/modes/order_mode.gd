@@ -5,11 +5,16 @@ extends Node2D
 @onready var hud = $HUD
 
 const TARGET_SCENE := preload("res://scenes/Targets/Target.tscn")
-const RESULT_SCREEN_SCENE := preload("res://scenes/ui/result_screen.tscn")
 const PAUSE_MENU_SCENE := preload("res://scenes/ui/pause_menu.tscn")
 
-# Área onde os alvos podem aparecer (ajuste conforme o tamanho da sua cena)
-var area_spawn: Rect2 = Rect2(Vector2(-300, -200), Vector2(600, 400))
+# Área onde os alvos podem aparecer. Calculada em runtime a partir do
+# tamanho real da janela (mesmo padrão que o GameBase.gd e o hud.gd já
+# usam), com uma margem pra não spawnar colado na borda. Antes eu tinha
+# um Rect2 fixo centrado em (0,0) — mas esse projeto trata (0,0) como o
+# canto superior esquerdo da tela, então metade da área ficava com
+# coordenadas negativas (fora da tela). Corrigido calculando aqui.
+@export var margem_spawn: float = 80.0
+var area_spawn: Rect2
 
 ## ------------------------------------------------------------
 ## Progressão de dificuldade (Seção D.3 do planejamento):
@@ -34,19 +39,20 @@ var indice_atual: int = 0
 var tempo_exibicao_sequencia: float = 3.0
 var alvos_ativos: Array = []           # instâncias de Target nesta rodada
 
-var _tela_resultado: Control
-
 
 func _ready() -> void:
+	var tamanho_tela := get_viewport_rect().size
+	area_spawn = Rect2(
+		Vector2(margem_spawn, margem_spawn),
+		tamanho_tela - Vector2(margem_spawn, margem_spawn) * 2
+	)
+
 	# Mantém o Disparo LIGADO (senão nenhum clique é detectado e o modo
 	# fica mudo/sem reação) mas desliga a pontuação automática dele —
 	# quem decide acerto/erro aqui é validar_acerto(), reagindo ao
 	# sinal "target_hit" que colisor.registrar_acerto() já dispara.
 	$Disparo.pontuar_automaticamente = false
 
-	_tela_resultado = RESULT_SCREEN_SCENE.instantiate()
-	_tela_resultado.visible = false
-	add_child(_tela_resultado)
 
 	# PauseMenu cuida de si mesmo (escuta ESC internamente) — só
 	# precisa ser instanciado como filha do modo.
@@ -178,8 +184,10 @@ func rodada_concluida() -> void:
 func _finalizar_partida() -> void:
 	_limpar_alvos_antigos()
 	label_sequencia.visible = false
-	_tela_resultado.visible = true
-	_tela_resultado.exibir_resultado_solo(ScoreSystem.obter_resultado_final())
+	
+	var resultado := ScoreSystem.obter_resultado_final()
+	GameManager.registrar_resultado_ordem(resultado)
+	GameManager.ir_para_resultado()
 
 
 func _limpar_alvos_antigos() -> void:

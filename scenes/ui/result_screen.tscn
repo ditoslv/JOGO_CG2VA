@@ -2,74 +2,95 @@
 
 [ext_resource type="Script" uid="uid://c1ejisqqxcn4r" path="res://scripts/ui/result_screen.gd" id="1_07uyp"]
 
-[node name="ResultScreen" type="Control" unique_id=1989643837]
+[node name="ResultScreen" type="Control" unique_id=471456605]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_07uyp")
 
-[node name="PainelJogador1" type="VBoxContainer" parent="." unique_id=1587306857]
-layout_mode = 0
-offset_left = 1030.0
-offset_top = 2.0
-offset_right = 1133.0
-offset_bottom = 133.0
+[node name="Camada" type="CanvasLayer" parent="." unique_id=793363367]
 
-[node name="LabelPontuaçãoFinal" type="Label" parent="PainelJogador1" unique_id=1135401923]
+[node name="Fundo" type="ColorRect" parent="Camada" unique_id=277860977]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="CenterContainer" type="CenterContainer" parent="Camada" unique_id=1994177411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxPrincipal" type="VBoxContainer" parent="Camada/CenterContainer" unique_id=2134821078]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelVencedor" type="Label" parent="Camada/CenterContainer/VBoxPrincipal" unique_id=712483651]
+visible = false
+layout_mode = 2
+text = "Vencedor: Jogador 1!"
+horizontal_alignment = 1
+
+[node name="HBoxJogadores" type="HBoxContainer" parent="Camada/CenterContainer/VBoxPrincipal" unique_id=205620326]
+layout_mode = 2
+alignment = 1
+
+[node name="PainelJogador1" type="VBoxContainer" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores" unique_id=310370937]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="LabelPontuaçãoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1" unique_id=1055189675]
 layout_mode = 2
 text = "Pontuação:0"
 
-[node name="LabelAcertosFinal" type="Label" parent="PainelJogador1" unique_id=619852373]
+[node name="LabelAcertosFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1" unique_id=461733851]
 layout_mode = 2
 text = "Acertos:0"
 
-[node name="LabelErrosFinal" type="Label" parent="PainelJogador1" unique_id=499243879]
+[node name="LabelErrosFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1" unique_id=1268258501]
 layout_mode = 2
 text = "Erros:0"
 
-[node name="LabelPrecisaoFinal" type="Label" parent="PainelJogador1" unique_id=111104774]
+[node name="LabelPrecisaoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1" unique_id=1998453298]
 layout_mode = 2
-text = "PrecisaoFinal"
+text = "Precisão: 0%"
 
-[node name="LabelTempoFinal" type="Label" parent="PainelJogador1" unique_id=1979443855]
+[node name="LabelTempoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1" unique_id=1516761526]
 layout_mode = 2
-text = "TempoFinal"
+text = "Tempo: 0.0s"
 
-[node name="PainelJogador2" type="VBoxContainer" parent="." unique_id=1754049125]
+[node name="PainelJogador2" type="VBoxContainer" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores" unique_id=639208896]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
 
-[node name="LabelPontuaçãoFinal" type="Label" parent="PainelJogador2" unique_id=211259209]
+[node name="LabelPontuaçãoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2" unique_id=307928710]
 layout_mode = 2
 text = "Pontuação:0"
 
-[node name="LabelAcertosFinal" type="Label" parent="PainelJogador2" unique_id=347092434]
+[node name="LabelAcertosFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2" unique_id=1211628210]
 layout_mode = 2
 text = "Acertos:0"
 
-[node name="LabelErrosFinal" type="Label" parent="PainelJogador2" unique_id=293411395]
+[node name="LabelErrosFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2" unique_id=1348149760]
 layout_mode = 2
 text = "Erros:0"
 
-[node name="LabelPrecisaoFinal" type="Label" parent="PainelJogador2" unique_id=1687308890]
+[node name="LabelPrecisaoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2" unique_id=257341078]
 layout_mode = 2
 text = "PrecisaoFinal"
 
-[node name="LabelTempoFinal" type="Label" parent="PainelJogador2" unique_id=589405610]
+[node name="LabelTempoFinal" type="Label" parent="Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2" unique_id=1576863306]
 layout_mode = 2
 text = "TempoFinal"
 
-[node name="LabelVencedor" type="Label" parent="." unique_id=1614200964]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Button" type="Button" parent="." unique_id=2113012081]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Button" type="Button" parent="Camada/CenterContainer/VBoxPrincipal" unique_id=1682591281]
+layout_mode = 2
 text = "Voltar ao Menu"

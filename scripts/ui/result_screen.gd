@@ -22,14 +22,26 @@ class_name ResultScreen
 
 signal voltar_ao_menu_solicitado()
 
-@onready var painel_jogador1: VBoxContainer = $PainelJogador1
-@onready var painel_jogador2: VBoxContainer = $PainelJogador2
-@onready var label_vencedor: Label = $LabelVencedor
-@onready var botao_voltar: Button = $Button
+@onready var painel_jogador1: VBoxContainer = $Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador1
+@onready var painel_jogador2: VBoxContainer = $Camada/CenterContainer/VBoxPrincipal/HBoxJogadores/PainelJogador2
+@onready var label_vencedor: Label = $Camada/CenterContainer/VBoxPrincipal/LabelVencedor
+@onready var botao_voltar: Button = $Camada/CenterContainer/VBoxPrincipal/Button
 
 
 func _ready() -> void:
 	botao_voltar.pressed.connect(_on_botao_voltar_pressed)
+
+	if GameManager.modo_atual == "ordem":
+		exibir_resultado_solo(GameManager.resultado_jogador_1)
+
+	elif GameManager.modo_atual == "solo":
+		exibir_resultado_solo(GameManager.resultado_jogador_1)
+
+	elif GameManager.modo_atual == "1v1":
+		exibir_resultado_1v1(
+			GameManager.resultado_jogador_1,
+			GameManager.resultado_jogador_2
+		)
 
 
 ## Chamada pelo Modo Solo e pelo Modo Ordem do Alvo ao final da rodada.
