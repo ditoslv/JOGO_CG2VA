@@ -111,7 +111,7 @@ func _mostrar_resultado_final() -> void:
 
 func _voltar_ao_menu() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menu/Menu.tscn")
+	get_tree().change_scene_to_file("res://main.tscn")
 
 # ==========================================
 # CRIAÇÃO DA INTERFACE DO 1V1 VIA CÓDIGO (COM LAYOUT CORRIGIDO)

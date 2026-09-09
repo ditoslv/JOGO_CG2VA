@@ -44,4 +44,4 @@ func voltar_ao_menu() -> void:
 	modo_atual = ""
 	resultado_jogador_1 = {}
 	resultado_jogador_2 = {}
-	get_tree().change_scene_to_file("res://scenes/menu/Menu.tscn")
+	get_tree().change_scene_to_file("res://main.tscn")
