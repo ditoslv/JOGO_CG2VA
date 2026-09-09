@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d4i4naq474o8j"]
+
+[ext_resource type="Script" uid="uid://rqo1amwfptcu" path="res://scripts/modes/VersusMode.gd" id="1_u1crb"]
+[ext_resource type="PackedScene" path="res://scenes/Core/GameBase.tscn" id="2_vfo2r"]
+[ext_resource type="PackedScene" uid="uid://bb5y78wdwf46d" path="res://scenes/ui/hud.tscn" id="3_wf5u1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="4_2lfw8"]
+
+[node name="VersusMode" type="Node2D" unique_id=1619378865]
+script = ExtResource("1_u1crb")
+
+[node name="GameBase" parent="." unique_id=506203168 instance=ExtResource("2_vfo2r")]
+
+[node name="HUD" parent="." unique_id=1952927498 instance=ExtResource("3_wf5u1")]
+
+[node name="PauseMenu" parent="." unique_id=1088410119 instance=ExtResource("4_2lfw8")]
