@@ -9,11 +9,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_6ac2j")
 
+<<<<<<< Updated upstream
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1769189701]
 custom_minimum_size = Vector2(-5, -5)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+=======
+[node name="Camada" type="CanvasLayer" parent="." unique_id=1073530628]
+follow_viewport_enabled = false
+>>>>>>> Stashed changes
 
 [node name="LabelPontuacao" type="Label" parent="VBoxContainer" unique_id=238329125]
 layout_mode = 2

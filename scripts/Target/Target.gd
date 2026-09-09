@@ -21,6 +21,20 @@ var is_active: bool = false
 var _tempo_restante: float = 0.0
 var _tempo_escala: float = 0.0
 
+<<<<<<< Updated upstream
+=======
+# Estado interno só do movimento circular (fase de "rotação pura",
+# ver _aplicar_movimento_circular() abaixo).
+# NOME DIFERENTE DE PROPÓSITO: isto controla o raio do CÍRCULO que o nó
+# inteiro descreve na Fase 4 (rotação pura). É diferente de "raio_orbita"
+# (a propriedade exportada acima, do ditoslv) — aquela desloca só o
+# sprite/colisão em torno do eixo do nó, usada na Fase 6 (combinação).
+# São dois efeitos visuais distintos; não são a mesma coisa por baixo.
+const RAIO_ORBITA_FASE_ROTACAO: float = 70.0
+var _centro_orbital: Vector2 = Vector2.ZERO
+var _angulo_orbital: float = 0.0
+
+>>>>>>> Stashed changes
 # --- Sinais ---
 signal target_hit(pontos: int)      # emitido ao ser acertado
 signal target_expired()             # emitido ao expirar sem ser acertado
@@ -64,6 +78,22 @@ func _aplicar_movimento(delta: float) -> void:
 		scale = Vector2(s, s)
 
 
+<<<<<<< Updated upstream
+=======
+## Movimento circular: em vez de só rotacionar em torno do próprio eixo,
+## o alvo passa a transladar ao redor de um centro fixo (o ponto onde
+## nasceu), aplicando a matriz de rotação R(θ) sobre um vetor de raio
+## fixo a cada frame — P(t) = centro + R(θ(t)) * raio. O nó também
+## continua girando (rotation), então o conceito de rotação segue
+## visível tanto na trajetória quanto na orientação do alvo.
+func _aplicar_movimento_circular(delta: float) -> void:
+	_angulo_orbital += velocidade_angular * delta
+	var offset := Vector2(RAIO_ORBITA_FASE_ROTACAO, 0.0).rotated(_angulo_orbital)
+	position = _centro_orbital + offset
+	rotation += velocidade_angular * delta
+
+
+>>>>>>> Stashed changes
 ## Chamada pelo TargetSpawner para (re)ativar este alvo com nova configuração.
 ## config é um Dictionary; chaves ausentes mantêm o valor atual.
 func ativar(config: Dictionary = {}) -> void:

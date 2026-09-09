@@ -114,11 +114,19 @@ func validar_acerto(numero_do_alvo: int) -> void:
 		aplicar_penalidade()
 
 
+## Regra escolhida (Seção D.3 do planejamento deixava em aberto: "reiniciar
+## sequência, perder pontos ou consumir tentativa"): errar a ordem reinicia
+## a rodada ATUAL com alvos novos. Não dá pra só zerar indice_atual sem
+## respawnar nada — os alvos já clicados nesta tentativa (certos ou errados)
+## já foram desativados permanentemente por Target.registrar_acerto(), então
+## o alvo nº1 da sequência não existe mais pra ser clicado de novo. O erro
+## já foi contado em ScoreSystem antes desta chamada. Se a equipe preferir
+## outra regra (só descontar pontos, ou consumir "vidas" antes de reiniciar),
+## troque só o corpo desta função — o resto do fluxo não muda.
 func aplicar_penalidade() -> void:
-	# Regra a definir em playtest (seção D.3 do planejamento):
-	# reiniciar sequência, perder pontos ou consumir tentativa.
 	indice_atual = 0
-	print("Ordem errada! Reiniciando sequência.")
+	print("Ordem errada! Reiniciando a rodada com alvos novos.")
+	iniciar_rodada()
 
 
 func rodada_concluida() -> void:
