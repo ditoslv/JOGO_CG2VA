@@ -26,6 +26,10 @@ GameManager="*uid://djbm8f23tv48i"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="Jogo Tiro Ao Alvaro"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
